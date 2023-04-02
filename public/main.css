@@ -43,13 +43,13 @@
 	color: #fff;
 }
 
-.todos {
+.videogames {
 	margin-top: 25px;
 	border: 1px solid #ccc;
 	padding: 10px;
 }
 
-.todo {
+.videogame {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -58,11 +58,11 @@
 	border-bottom: 1px dotted #ccc;
 }
 
-.todo:last-child {
+.videogame:last-child {
 	border-bottom: none;
 }
 
-.todo:hover {
+.videogame:hover {
 	background: #eee;
 }
 

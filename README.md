@@ -1,6 +1,6 @@
-# TO DO APPLICATION
+# VIDEO GAME APPLICATION
 
-This app allows user to track the to dos.
+This app allows user to track the videogames.
 
 ### Instructions
 1. Download the source code
@@ -26,3 +26,4 @@ node app
 
 #### Link to github repository
 https://github.com/00017203/todoapp.git
+

@@ -13,48 +13,48 @@ app.use(express.urlencoded({ extended: false }))
 
 //http://localhost:8000
 app.get('/', (req, res) => {
-	fs.readFile('./data/todos.json', (err, data) => {
+	fs.readFile('./data/videogames.json', (err, data) => {
 		if (err) throw err 
 
-		const todos = JSON.parse(data)
+		const videogames = JSON.parse(data)
 
-		res.render('home', { todos: todos })
+		res.render('home', { videogames: videogames })
 	})
 })
 
 app.post('/add', (req, res) => {
 	const formData = req.body
 
-	if (formData.todo.trim() == '') {
-		fs.readFile('./data/todos.json', (err, data) => {
+	if (formData.videogame.trim() == '') {
+		fs.readFile('./data/videogames.json', (err, data) => {
 					if (err) throw err
 
-					const todos = JSON.parse(data)
+					const videogames = JSON.parse(data)
 
-					res.render('home', { error:true, todos:todos })
+					res.render('home', { error:true, videogames:videogames })
 				})
 	} 	else {
-		fs.readFile('./data/todos.json', (err, data) => {
+		fs.readFile('./data/videogames.json', (err, data) => {
 			if (err) throw err
 
-			const todos = JSON.parse(data)
+			const videogames = JSON.parse(data)
 
-			const todo = {
+			const videogame = {
 				id: id(),
-				description: formData.todo
+				description: formData.videogame
 			}
 
-			todos.push(todo)
+			videogames.push(videogame)
 
-			fs.writeFile('./data/todos.json', JSON.stringify(todos), (err) => {
+			fs.writeFile('./data/videogames.json', JSON.stringify(videogames), (err) => {
 				if (err) throw err
 
-				fs.readFile('./data/todos.json', (err, data) => {
+				fs.readFile('./data/videogames.json', (err, data) => {
 					if (err) throw err
 
-					const todos = JSON.parse(data)
+					const videogames = JSON.parse(data)
 
-					res.render('home', { success:true, todos:todos })
+					res.render('home', { success:true, videogames:videogames })
 				})
 			})
 		})
@@ -64,17 +64,17 @@ app.post('/add', (req, res) => {
 app.get('/:id/delete', (req, res) => {
 	const id = req.params.id
 
-	fs.readFile('./data/todos.json', (err, data) => {
+	fs.readFile('./data/videogames.json', (err, data) => {
 		if (err) throw err 
 
-		const todos = JSON.parse(data)
+		const videogames = JSON.parse(data)
 
-		const filteredTodos = todos.filter(todo => todo.id != id)
+		const filteredVideoGames = videogames.filter(videogame => videogame.id != id)
 
-		fs.writeFile('./data/todos.json', JSON.stringify(filteredTodos), (err) => {
+		fs.writeFile('./data/videogames.json', JSON.stringify(filteredVideoGames), (err) => {
 			if (err) throw err 
 
-			res.render('home', { todos: filteredTodos, deleted: true })
+			res.render('home', { videogames: filteredVideoGames, deleted: true })
 		})
 	})
 })
@@ -83,23 +83,23 @@ app.get('/:id/delete', (req, res) => {
 app.get('/:id/update', (req, res) => {
 	const id = req.params.id 
 
-	fs.readFile('./data/todos.json', (err, data) => {
+	fs.readFile('./data/videogames.json', (err, data) => {
 		if (err) throw err 
 
-		const todos = JSON.parse(data)
-		const todo = todos.filter(todo => todo.id == id)[0]
+		const videogames = JSON.parse(data)
+		const videogame = videogames.filter(videogame => videogame.id == id)[0]
 		
-		const todoIdx = todos.indexOf(todo)
-		const splicedTodo = todos.splice(todoIdx, 1)[0]
+		const videogameIdx = videogames.indexOf(videogame)
+		const splicedVideoGame = videogames.splice(videogameIdx, 1)[0]
 
-		splicedTodo.done = true
+		splicedVideoGame.done = true
 
-		todos.push(splicedTodo)
+		videogames.push(splicedVideoGame)
 
-		fs.writeFile('./data/todos.json', JSON.stringify(todos), (err) => {
+		fs.writeFile('./data/videogames.json', JSON.stringify(videogames), (err) => {
 			if (err) throw err 
 
-			res.render('home', { todos: todos })
+			res.render('home', { videogames: videogames })
 		})
 	})
 })
