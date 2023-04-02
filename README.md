@@ -6,7 +6,7 @@ This app allows user to track the videogames.
 1. Download the source code
 
 ```js
-git clone https://github.com/00017203/todoapp.git
+git clone https://github.com/00017203/videogameapp.git
 ```
 or just download the .zip file
 
@@ -25,5 +25,5 @@ node app
 - pug
 
 #### Link to github repository
-https://github.com/00017203/todoapp.git
+https://github.com/00017203/videogameapp.git
 

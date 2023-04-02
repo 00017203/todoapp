@@ -2,13 +2,13 @@ extends layout.pug
 
 block number1
 	if error
-		p.error Please fill the input
+		p.error Please type in a videogame.
 
 	if success
-		p.success Good job
+		p.success Well done! Good choice!
 
 	if deleted
-		p.success Deleted
+		p.success Successfully Deleted!
 		
 	form.form(action='/add' method='POST')
 		input.input(type='text' placeholder ='Add your videogame description here...' name='videogame')
@@ -24,4 +24,4 @@ block number1
 						a.undone(href=`/${ videogame.id }/update`) #{ videogame. description }
 					a.delete(href=`/${ videogame.id }/delete`) Delete
 		else
-			p.videogame No any todo available
+			p.videogame No videogame available
